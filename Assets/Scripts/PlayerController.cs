@@ -1,46 +1,47 @@
 using UnityEngine;
-
+using System.Collections;
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 100f;   // speed of movement
-    public float gridSize = 1f;    // size of the grid
-    public float jumpForce = 7f;   // force of jump
+    public int speed = 300;
+    bool isMoving = false;
 
-    public float rateOfMove = 5;
-    private float lastMove = 0;
-
-    private Rigidbody rb;
-
-    void Start()
+    void Update()
     {
-        rb = GetComponent<Rigidbody>();
+        if (isMoving)
+        {
+            return;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            StartCoroutine(Roll(Vector3.right));
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            StartCoroutine(Roll(Vector3.left));
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            StartCoroutine(Roll(Vector3.forward));
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            StartCoroutine(Roll(Vector3.back));
+        }
     }
 
-    void FixedUpdate()
+    IEnumerator Roll(Vector3 direction)
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        Vector3 direction = new Vector3(h, 0, v).normalized;
-
-        // Rotate movement vector to match camera angle
-        //direction = Quaternion.Euler(45, 0, 0) * direction;
-
-        // Calculate movement vector
-        Vector3 movement = direction * gridSize;
-
-        // Move character
-        if ((lastMove + 1 / rateOfMove) < Time.time)
+        isMoving = true;
+        float remainingAngle = 90;
+        Vector3 rotationCenter = transform.position + direction / 2 + Vector3.down / 2;
+        Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);
+        while (remainingAngle > 0)
         {
-            lastMove = Time.time;
-            rb.MovePosition(transform.position + movement * moveSpeed * Time.fixedDeltaTime);
-
+            float rotationAngle = Mathf.Min(Time.deltaTime * speed, remainingAngle);
+            transform.RotateAround(rotationCenter, rotationAxis, rotationAngle);
+            remainingAngle -= rotationAngle;
+            yield return null;
         }
-
-        // Jump if space bar is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+        isMoving = false;
     }
 }
