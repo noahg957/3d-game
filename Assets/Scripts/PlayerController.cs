@@ -3,8 +3,9 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     public int speed = 300;
+    public bool flippedMovement = false;
     bool isMoving = false;
-
+    
     void Update()
     {
         if (isMoving)
