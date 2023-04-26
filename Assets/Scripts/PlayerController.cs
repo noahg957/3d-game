@@ -16,10 +16,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        rightMovement = KeyCode.RightArrow;
-        leftMovement = KeyCode.LeftArrow;
-        forwardMovement = KeyCode.UpArrow;
-        backwardMovement = KeyCode.DownArrow;
+        rightMovement = KeyCode.UpArrow;
+        leftMovement = KeyCode.DownArrow;
+        forwardMovement = KeyCode.RightArrow;
+        backwardMovement = KeyCode.LeftArrow;
 
         if (flippedMovement)
         {
