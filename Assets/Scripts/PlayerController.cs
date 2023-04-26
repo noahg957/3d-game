@@ -2,29 +2,55 @@ using UnityEngine;
 using System.Collections;
 public class PlayerController : MonoBehaviour
 {
+
+    private KeyCode forwardMovement;
+    private KeyCode backwardMovement;
+    private KeyCode rightMovement;
+    private KeyCode leftMovement;
+
+
     public int speed = 300;
     public bool flippedMovement = false;
-    bool isMoving = false;
-    
+    private bool isMoving = false;
+
+    public PlayerController otherCube;
+
+    private void Start()
+    {
+        rightMovement = KeyCode.RightArrow;
+        leftMovement = KeyCode.LeftArrow;
+        forwardMovement = KeyCode.UpArrow;
+        backwardMovement = KeyCode.DownArrow;
+
+        if (flippedMovement)
+        {
+            KeyCode temp;
+            temp = forwardMovement;
+            forwardMovement = backwardMovement;
+            backwardMovement = temp;
+        }
+
+    }
+
     void Update()
     {
-        if (isMoving)
+        if (isCubeMoving() || otherCube.isCubeMoving())
         {
             return;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(rightMovement))
         {
             StartCoroutine(Roll(Vector3.right));
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(leftMovement))
         {
             StartCoroutine(Roll(Vector3.left));
         }
-        else if (Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKey(forwardMovement))
         {
             StartCoroutine(Roll(Vector3.forward));
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(backwardMovement))
         {
             StartCoroutine(Roll(Vector3.back));
         }
@@ -44,5 +70,10 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         isMoving = false;
+    }
+
+    public bool isCubeMoving()
+    {
+        return isMoving;
     }
 }

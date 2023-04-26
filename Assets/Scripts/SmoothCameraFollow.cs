@@ -13,9 +13,10 @@ public class SmoothCameraFollow : MonoBehaviour
     [SerializeField] private float smoothTime;
     private Vector3 _currentVelocity = Vector3.zero;
 
-   
+
 
     private void Awake() => _offset = transform.position - target.position;
+
 
     private void LateUpdate()
     {
