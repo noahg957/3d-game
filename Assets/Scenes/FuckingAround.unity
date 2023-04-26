@@ -518,7 +518,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 463475730, guid: 8e1c6deb6f0884362b9eab43a2543aec, type: 3}
       propertyPath: speed
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 463475730, guid: 8e1c6deb6f0884362b9eab43a2543aec, type: 3}
       propertyPath: otherCube

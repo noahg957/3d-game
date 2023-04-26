@@ -15,14 +15,19 @@ public class SmoothCameraFollow : MonoBehaviour
 
 
 
-    private void Awake() => _offset = transform.position - target.position;
+    private void Awake()
+    {
+        Vector3 targetPosition = new Vector3(target.position.x,
+            target.position.y, transform.position.z);
 
+        _offset = transform.position - target.position;
+    }
 
     private void LateUpdate()
     {
         Vector3 targetPosition = target.position + _offset;
-        transform.position =
-            Vector3.SmoothDamp(transform.position,
+        targetPosition.z = transform.position.z; // keep the same z-coordinate as the camera's initial position
+        transform.position = Vector3.SmoothDamp(transform.position,
             targetPosition, ref _currentVelocity, smoothTime);
     }
 
