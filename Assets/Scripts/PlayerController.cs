@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public bool flippedMovement = false;
     private bool isMoving = false;
 
-    public PlayerController otherCube;
 
     private void Start()
     {
@@ -34,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (isCubeMoving() || otherCube.isCubeMoving())
+        if (isCubeMoving())
         {
             return;
         }
