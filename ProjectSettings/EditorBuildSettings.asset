@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/grace.unity
+    guid: 71e4107fb2587463bb93b89f89eba411
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 1d4ddd7cd91894befb2d683fa9b9cbe7
+  - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: 39d80bf8f51084df3bdb8e581426dfa2
   m_configObjects: {}
