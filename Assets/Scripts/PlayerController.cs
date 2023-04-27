@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private KeyCode backwardMovement;
     private KeyCode rightMovement;
     private KeyCode leftMovement;
+    private Rigidbody rb;
+
 
 
     public int speed = 300;
@@ -14,12 +16,15 @@ public class PlayerController : MonoBehaviour
     private bool isMoving = false;
 
 
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         rightMovement = KeyCode.UpArrow;
         leftMovement = KeyCode.DownArrow;
         forwardMovement = KeyCode.RightArrow;
         backwardMovement = KeyCode.LeftArrow;
+        
 
         if (flippedMovement)
         {
@@ -33,28 +38,54 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+      
         if (isCubeMoving())
         {
             return;
         }
         if (Input.GetKey(rightMovement))
         {
-            StartCoroutine(Roll(Vector3.right));
+            Move(Vector3.right);
         }
         else if (Input.GetKey(leftMovement))
         {
-            StartCoroutine(Roll(Vector3.left));
+            Move(Vector3.left);
         }
         else if (Input.GetKey(forwardMovement))
         {
-            StartCoroutine(Roll(Vector3.forward));
+            Move(Vector3.forward);
         }
         else if (Input.GetKey(backwardMovement))
         {
-            StartCoroutine(Roll(Vector3.back));
+            Move(Vector3.back);
         }
-    }
+        // Check if cube is still on top of an object
+        RaycastHit hit;
+        if (!(Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f)))
+        {
+            // Cube is not on top of an object
+            if (rb.isKinematic)
+            {
+                // If the rigidbody is kinematic, set it to not be kinematic so it  falls
+                rb.isKinematic = false;
+            }
+        }
 
+
+    }
+    void Move(Vector3 direction)
+    {
+        // Check for collisions before moving
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, direction, out hit, 1.2f))
+        {
+            Debug.Log("Collision detected!");
+            return;
+        }
+
+        // Move the cube if there are no collisions
+        StartCoroutine(Roll(direction));
+    }
     IEnumerator Roll(Vector3 direction)
     {
         isMoving = true;
