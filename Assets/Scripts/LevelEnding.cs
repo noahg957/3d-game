@@ -34,13 +34,13 @@ public class LevelEnding : MonoBehaviour
     IEnumerator endLevel()
     {
         //audioSource.PlayOneShot(tada);
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.3f);
         SceneManager.LoadScene(next_scene);
     }
 
     IEnumerator loseLevel()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.3f);
         SceneManager.LoadScene("LoseScene");
     }
 }
