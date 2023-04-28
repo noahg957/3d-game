@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class PlayerController : MonoBehaviour
 {
+    public bool inHole;
 
     private KeyCode forwardMovement;
     private KeyCode backwardMovement;
@@ -24,7 +25,8 @@ public class PlayerController : MonoBehaviour
         leftMovement = KeyCode.DownArrow;
         forwardMovement = KeyCode.RightArrow;
         backwardMovement = KeyCode.LeftArrow;
-        
+
+        inHole = false;
 
         if (flippedMovement)
         {
