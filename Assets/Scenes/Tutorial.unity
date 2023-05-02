@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 366709689649083340, guid: da6434192033d4aacb3993a1ce523ea3, type: 3}
       propertyPath: levelToSkip
-      value: Level2
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 366709689984925411, guid: da6434192033d4aacb3993a1ce523ea3, type: 3}
       propertyPath: m_Name
