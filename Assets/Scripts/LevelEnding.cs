@@ -42,6 +42,10 @@ public class LevelEnding : MonoBehaviour
                 StartCoroutine(loseLevel());
             }
         }
+        if (good_cube.fellOff)
+        {
+            StartCoroutine(loseLevel());
+        }
     }
 
     IEnumerator endLevel()

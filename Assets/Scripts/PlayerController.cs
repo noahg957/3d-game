@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public int speed = 300;
     public bool flippedMovement = false;
     private bool isMoving = false;
+    public bool fellOff = false;
 
 
 
@@ -71,6 +72,10 @@ public class PlayerController : MonoBehaviour
                 // If the rigidbody is kinematic, set it to not be kinematic so it  falls
                 rb.isKinematic = false;
             }
+        }
+        if (transform.position.y < -5)
+        {
+            fellOff = true;
         }
 
 
