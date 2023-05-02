@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 366709689649083340, guid: da6434192033d4aacb3993a1ce523ea3, type: 3}
       propertyPath: levelToSkip
-      value: Level2
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 366709689984925411, guid: da6434192033d4aacb3993a1ce523ea3, type: 3}
       propertyPath: m_Name
@@ -351,7 +351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e80beb8d06a144794b97d085296de897, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.2
+      value: -16.72
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e80beb8d06a144794b97d085296de897, type: 3}
       propertyPath: m_LocalPosition.y
@@ -359,7 +359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e80beb8d06a144794b97d085296de897, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 137.15
+      value: 134
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e80beb8d06a144794b97d085296de897, type: 3}
       propertyPath: m_LocalRotation.w
@@ -952,7 +952,7 @@ MonoBehaviour:
   bad_portal: {fileID: 1546052400}
   good_cube: {fileID: 1036160852}
   bad_cube: {fileID: 376570000}
-  next_scene: Level2
+  next_scene: Level1
 --- !u!1001 &2098482681
 PrefabInstance:
   m_ObjectHideFlags: 0
