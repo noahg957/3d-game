@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public bool flippedMovement = false;
     private bool isMoving = false;
     public bool fellOff = false;
+    public float fadeTime = 0.8f;
+    private bool moveLock = false;
+
 
 
 
@@ -43,6 +46,10 @@ public class PlayerController : MonoBehaviour
     {
       
         if (isCubeMoving())
+        {
+            return;
+        }
+        if (moveLock)
         {
             return;
         }
@@ -112,5 +119,35 @@ public class PlayerController : MonoBehaviour
     public bool isCubeMoving()
     {
         return isMoving;
+    }
+    public void goInvisible()
+    {
+        StartCoroutine(FadeOut());
+
+    }
+    IEnumerator FadeOut()
+    {
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        float counter = 0;
+        //Get current color
+        
+        Color color = renderer.material.color;
+        moveLock = true;
+        while (counter < fadeTime)
+        {
+            Debug.Log(renderer.material);
+            counter += Time.deltaTime;
+            //Fade from 1 to 0
+            float alpha = Mathf.Lerp(1, 0, counter / fadeTime);
+            Debug.Log(alpha);
+
+            //Change alpha only
+            renderer.material.color = new Color(color.r, color.g, color.b, alpha);
+            Debug.Log(renderer.material.color);
+            //Wait for a frame
+            yield return null;
+        }
+        
+        
     }
 }

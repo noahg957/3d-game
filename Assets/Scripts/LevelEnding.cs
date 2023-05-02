@@ -28,7 +28,7 @@ public class LevelEnding : MonoBehaviour
         }
         if (bad_cube.inHole)
         {
-            Destroy(bad_cube, 0.001f); // TODO: not destroying properly
+            bad_cube.goInvisible();
         }
 
         if (good_portal.isPlayerHere)
