@@ -129,5 +129,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHole: 0
   speed: 350
-  flippedMovement: 1
+  flippedMovement: 0
   fellOff: 0
