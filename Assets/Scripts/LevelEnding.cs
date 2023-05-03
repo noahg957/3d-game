@@ -40,6 +40,7 @@ public class LevelEnding : MonoBehaviour
 
         if (good_portal.isPlayerHere)
         {
+            good_cube.FreezeCube();
             if (!bad_portal.isPlayerHere)
             {
                 StartCoroutine(endLevel());

@@ -18,11 +18,13 @@ public class PortalControl : MonoBehaviour
        
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("Player"))
+        GameObject col = other.gameObject;
+        if (col.CompareTag("Player"))
         {
             isPlayerHere = true;
+            col.GetComponent<PlayerController>().isMoving = false;
         }
     }
 }
