@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public int speed = 300;
     public bool flippedMovement = false;
-    private bool isMoving = false;
+    public bool isMoving = false;
     public bool fellOff = false;
     public float fadeTime = 0.8f;
     private bool moveLock = false;
@@ -160,5 +160,12 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = new Vector3(0,2,0);
 
+    }
+
+    public void FreezeCube()
+    {
+        rb.constraints = RigidbodyConstraints.FreezeRotationX |
+            RigidbodyConstraints.FreezeRotationY |
+            RigidbodyConstraints.FreezeRotationZ;
     }
 }
