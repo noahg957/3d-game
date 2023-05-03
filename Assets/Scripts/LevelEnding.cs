@@ -14,7 +14,7 @@ public class LevelEnding : MonoBehaviour
     public AudioClip burn;
     public AudioClip success;
     public AudioClip failure;
-
+    private bool badCubeAlive = true;
     public string next_scene;
 
     // Start is called before the first frame update
@@ -28,14 +28,22 @@ public class LevelEnding : MonoBehaviour
     {
         if (good_cube.inHole)
         {
+            StartCoroutine(burnSound());
             good_cube.goInvisible();
-            audioSource.PlayOneShot(burn);
+
+
+
+
+
             StartCoroutine(loseLevel());
         }
-        if (bad_cube.inHole)
+        if (bad_cube.inHole && badCubeAlive)
         {
-            audioSource.PlayOneShot(burn);
+            StartCoroutine(burnSound());
             bad_cube.goInvisible();
+            badCubeAlive = false;
+
+
         }
 
         if (good_portal.isPlayerHere)
@@ -55,6 +63,14 @@ public class LevelEnding : MonoBehaviour
         }
     }
 
+    IEnumerator burnSound()
+    {
+
+        audioSource.volume = 0.9f;
+        audioSource.PlayOneShot(burn);
+        yield return new WaitForSeconds(0.6f);
+        audioSource.volume = 0.098f;
+    }
     IEnumerator endLevel()
     {
         //audioSource.PlayOneShot(tada);

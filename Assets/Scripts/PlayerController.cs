@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, direction, out hit, 1.2f))
         {
-            Debug.Log("Collision detected!");
+    
             return;
         }
 
@@ -146,19 +146,19 @@ public class PlayerController : MonoBehaviour
         moveLock = true;
         while (counter < fadeTime)
         {
-            Debug.Log(renderer.material);
+
             counter += Time.deltaTime;
             //Fade from 1 to 0
             float alpha = Mathf.Lerp(1, 0, counter / fadeTime);
-            Debug.Log(alpha);
+    
 
             //Change alpha only
             renderer.material.color = new Color(color.r, color.g, color.b, alpha);
-            Debug.Log(renderer.material.color);
+
             //Wait for a frame
             yield return null;
         }
-        
-        
+        transform.position = new Vector3(0,2,0);
+
     }
 }
