@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     public bool fellOff = false;
     public float fadeTime = 0.8f;
     private bool moveLock = false;
+    public bool muted = false;
+    public AudioSource audioSource;
+    public AudioClip move;
+
 
 
 
@@ -78,11 +82,13 @@ public class PlayerController : MonoBehaviour
             {
                 // If the rigidbody is kinematic, set it to not be kinematic so it  falls
                 rb.isKinematic = false;
+                
             }
         }
-        if (transform.position.y < -5)
+        if (transform.position.y < 1)
         {
             fellOff = true;
+            moveLock = true;
         }
 
 
@@ -103,6 +109,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator Roll(Vector3 direction)
     {
         isMoving = true;
+        if (!muted)
+        {
+            audioSource.time = 0.5f;
+            audioSource.PlayOneShot(move);
+        }
         float remainingAngle = 90;
         Vector3 rotationCenter = transform.position + direction / 2 + Vector3.down / 2;
         Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);

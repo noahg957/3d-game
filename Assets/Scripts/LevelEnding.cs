@@ -10,6 +10,10 @@ public class LevelEnding : MonoBehaviour
 
     public PlayerController good_cube;
     public PlayerController bad_cube;
+    public AudioSource audioSource;
+    public AudioClip burn;
+    public AudioClip success;
+    public AudioClip failure;
 
     public string next_scene;
 
@@ -24,10 +28,13 @@ public class LevelEnding : MonoBehaviour
     {
         if (good_cube.inHole)
         {
+            good_cube.goInvisible();
+            audioSource.PlayOneShot(burn);
             StartCoroutine(loseLevel());
         }
         if (bad_cube.inHole)
         {
+            audioSource.PlayOneShot(burn);
             bad_cube.goInvisible();
         }
 
@@ -51,13 +58,15 @@ public class LevelEnding : MonoBehaviour
     IEnumerator endLevel()
     {
         //audioSource.PlayOneShot(tada);
-        yield return new WaitForSeconds(0.1f);
+        audioSource.PlayOneShot(success);
+        yield return new WaitForSeconds(0.9f);
         SceneManager.LoadScene(next_scene);
     }
 
     IEnumerator loseLevel()
     {
-        yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene("LoseScene");
+        audioSource.PlayOneShot(failure);
+        yield return new WaitForSeconds(0.9f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
