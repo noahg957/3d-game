@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c3fe8de06f664912b4cb5fd89a33a9c, type: 2}
+  - {fileID: 2100000, guid: 055eef646cd0e435eb7be5e79bff1fe7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   inHole: 0
   speed: 350
   flippedMovement: 1
+  isMoving: 0
   fellOff: 0
   fadeTime: 0.8
   muted: 0
