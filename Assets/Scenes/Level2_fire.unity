@@ -5534,6 +5534,12 @@ MonoBehaviour:
   inHole: 0
   speed: 350
   flippedMovement: 0
+  isMoving: 0
+  fellOff: 0
+  fadeTime: 0.8
+  muted: 0
+  audioSource: {fileID: 0}
+  move: {fileID: 0}
 --- !u!1001 &1415814134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5878,8 +5884,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   good_portal: {fileID: 7130569}
   bad_portal: {fileID: 494032322}
-  good_cube: {fileID: 2087263695}
+  good_cube: {fileID: 0}
   bad_cube: {fileID: 1321788578}
+  audioSource: {fileID: 0}
+  burn: {fileID: 0}
+  success: {fileID: 0}
+  failure: {fileID: 0}
   next_scene: StartScene
 --- !u!1001 &1870615098
 PrefabInstance:
@@ -5955,17 +5965,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6537726694373243085, guid: d7281fc23ce1c4f0eb92c9e195fb61e0, type: 3}
   m_PrefabInstance: {fileID: 414439431}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2087263695 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6537726694373243094, guid: d7281fc23ce1c4f0eb92c9e195fb61e0, type: 3}
-  m_PrefabInstance: {fileID: 414439431}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9051ece27b00345558113dbc3e9b77bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2098482681
 PrefabInstance:
   m_ObjectHideFlags: 0
